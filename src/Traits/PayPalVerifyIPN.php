@@ -39,7 +39,7 @@ trait PayPalVerifyIPN
             ]);
         }
 
-        $params = $request->all();
+        $params = $request->getContent();
 
         $payload = [
             'auth_algo'         => $headers['PAYPAL-AUTH-ALGO'][0],
@@ -51,6 +51,6 @@ trait PayPalVerifyIPN
             'webhook_event'     => $params,
         ];
 
-        return $this->verifyWebHook(json_encode($payload));
+        return $this->verifyWebHook($payload);
     }
 }
