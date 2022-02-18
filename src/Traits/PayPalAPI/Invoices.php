@@ -201,7 +201,7 @@ trait Invoices
      *
      * @see https://developer.paypal.com/docs/api/invoicing/v2/#invoices_payments
      */
-    public function registerPaymentInvoice(string $invoice_id, string $payment_date, string $payment_method, float $amount, string $payment_note = '', string $payment_id = '')
+    public function registerPaymentInvoice(string $invoice_id, string $payment_date, string $payment_method, array $amount, string $payment_note = '', string $payment_id = '')
     {
         $this->apiEndPoint = "v2/invoicing/invoices/{$invoice_id}/payments";
 
@@ -210,10 +210,7 @@ trait Invoices
             'payment_date'  => $payment_date,
             'method'        => $payment_method,
             'note'          => $payment_note,
-            'amount'        => [
-                'currency'  => $this->currency,
-                'value'     => $amount,
-            ],
+            'amount'        => $amount,
         ];
 
         $this->options['json'] = $data;
