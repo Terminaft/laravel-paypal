@@ -7,7 +7,7 @@ trait WebHooksVerification
     /**
      * Verify a web hook from PayPal.
      *
-     * @param array $data
+     * @param array|string $data
      *
      * @throws \Throwable
      *
@@ -15,11 +15,11 @@ trait WebHooksVerification
      *
      * @see https://developer.paypal.com/docs/api/webhooks/v1/#verify-webhook-signature_post
      */
-    public function verifyWebHook(array $data)
+    public function verifyWebHook($data)
     {
         $this->apiEndPoint = 'v1/notifications/verify-webhook-signature';
 
-        $this->options['json'] = $data;
+        $this->options['body'] = $data;
 
         $this->verb = 'post';
 

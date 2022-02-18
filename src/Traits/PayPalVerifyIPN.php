@@ -51,6 +51,6 @@ trait PayPalVerifyIPN
             'webhook_event'     => $params,
         ];
 
-        return $this->verifyWebHook($payload);
+        return $this->verifyWebHook(json_encode($payload));
     }
 }
