@@ -19,7 +19,7 @@ trait WebHooksVerification
     {
         $this->apiEndPoint = 'v1/notifications/verify-webhook-signature';
 
-        $this->options['json'] = $data;
+        $this->options['body'] = $data;
 
         $this->verb = 'post';
 

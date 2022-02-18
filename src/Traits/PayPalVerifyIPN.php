@@ -39,7 +39,7 @@ trait PayPalVerifyIPN
             ]);
         }
 
-        $params = $request->getContent();
+        $params = $request->all();
 
         $payload = [
             'auth_algo'         => $headers['PAYPAL-AUTH-ALGO'][0],
